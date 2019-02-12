@@ -16,10 +16,17 @@ final class CalculTest extends TestCase{
         $this->calculClass = NULL;
     }
 
-    public function testCalcul() : void
+    public function testCalculAdd() : void
     {
         $init = new Calcul();
         $res = $init->add(4,6);
         $this->assertEquals(10, $res);
+    }
+
+    public function testCalculMultiply() : void
+    {
+        $init = new Calcul();
+        $res = $init->multiply(4,3);
+        $this->assertEquals(12, $res);
     }
 }
