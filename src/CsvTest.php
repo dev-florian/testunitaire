@@ -2,7 +2,7 @@
 use App\Csv;
 use PHPUnit\Framework\TestCase;
 
-final class CalculTest extends TestCase{
+final class CsvTest extends TestCase{
 
     private $csvClass;
 
@@ -37,12 +37,5 @@ final class CalculTest extends TestCase{
         if(connection_status()==0){
             $this->addWarning("La connection avec l'utilisateur a echoué");
         }
-    }
-
-    public function testCalculMultiply() : void
-    {
-        $init = new Calcul();
-        $res = $init->multiply(4,3);
-        $this->assertEquals(12, $res);
     }
 }
