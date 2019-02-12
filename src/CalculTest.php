@@ -1,32 +1,51 @@
 <?php
+
 use App\Calcul;
 use PHPUnit\Framework\TestCase;
 
-final class CalculTest extends TestCase{
+final class CalculTest extends TestCase
+{
 
     private $calculClass;
 
-    public function Init() : void
+    public function Init(): void
     {
-        $this->calculClass = new Calcul();
+        try {
+            $this->calculClass = new Calcul();
+        } catch (Exception $e) {
+            $this->addWarning("Impossible de créer la classe");
+        }
+
     }
 
-    public function MakeEmpty() : void
+    public function MakeEmpty(): void
     {
-        $this->calculClass = NULL;
+        try {
+            $this->calculClass = NULL;
+        } catch (Exception $e) {
+            $this->addWarning("Impossible de vider la classe");
+        }
     }
 
-    public function testCalculAdd() : void
+    public function testCalculAdd(): void
     {
-        $init = new Calcul();
-        $res = $init->add(4,6);
-        $this->assertEquals(10, $res);
+        try {
+            $init = new Calcul();
+            $res = $init->add(4, 6);
+            $this->assertEquals(10, $res);
+        } catch (Exception $e) {
+            $this->addWarning("Impossible d'effectuer le calcul / Le resultat est peut être faux");
+        }
     }
 
-    public function testCalculMultiply() : void
+    public function testCalculMultiply(): void
     {
-        $init = new Calcul();
-        $res = $init->multiply(4,3);
-        $this->assertEquals(12, $res);
+        try {
+            $init = new Calcul();
+            $res = $init->multiply(4, 3);
+            $this->assertEquals(12, $res);
+        } catch (Exception $e) {
+            $this->addWarning("Impossible d'effectuer le calcul / Le resultat est peut être faux");
+        }
     }
 }
