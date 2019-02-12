@@ -1,9 +1,12 @@
 <?php
 
 use App\Calcul;
+use App\Csv;
 
 Require "src/Calcul.php";
+Require "src/Csv.php";
 ?>
+<?php if (!isset($_POST['submit3'])):?>
 
     <h1>ADDITION</h1>
     <form name="form" action="" method="post">
@@ -44,6 +47,7 @@ Require "src/Calcul.php";
 
         <input type="submit" name="submit3" value="valider">
     </form>
+<?php endif ?>
 <?php
 
 if (isset($_POST['submit'])) {
@@ -62,9 +66,14 @@ if (isset($_POST['submit3'])) {
     $init = new Calcul();
     if($_POST["choice_calcul"] == "add"){
         $res = $init->add($_POST['number1'], $_POST['number2']);
+        $data = array(array($_POST["number1"], $_POST["number2"],$_POST["choice_calcul"],$res));
     }
     if($_POST["choice_calcul"] == "multiply"){
         $res = $init->multiply($_POST['number1'], $_POST['number2']);
+        $data = array(array($_POST["number1"], $_POST["number2"],$_POST["choice_calcul"],$res));
     }
-    echo "<h3>Le resultat est de " . $res . "</h3>";
+
+    $initCsv = new Csv();
+    $initCsv->array_to_csv_download($data,"result.csv");
+    die();
 }
