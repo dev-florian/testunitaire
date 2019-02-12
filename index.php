@@ -16,7 +16,7 @@ Require "src/Calcul.php";
 <?php
 
 if(isset($_POST['submit'])){
-    $res = new Calcul();
-    $res = $res->add($_POST['number1'], $_POST['number2']);
+    $init = new Calcul();
+    $res = $init->add($_POST['number1'], $_POST['number2']);
     echo "<h3>Le resultat est de ".$res."</h3>";
 }
