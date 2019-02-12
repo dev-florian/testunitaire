@@ -24,6 +24,9 @@ final class CsvTest extends TestCase{
         }
     }
 
+    /**
+     * @runInSeparateProcess
+     */
     public function testInsertDataAndDownload() : void
     {
         $init = new Csv();
